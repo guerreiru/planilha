@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172d35">
+  <meta name="description" content="Sua planilha de seis semanas para os 5 km sub-34, disponível offline.">
+  <title>Ritmo — Seu plano para os 5 km</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+  <div class="mx-auto max-w-[1080px] px-5 pb-12 sm:px-8">
+    <header class="flex h-[76px] items-center justify-between">
+      <a href="#inicio" class="flex items-center gap-2.5" aria-label="Ritmo, início">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-ink text-white" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M4 16.5 9 7l3.1 6 2.4-4.5L20 16.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="text-xl font-black tracking-[-.07em]">ritmo<span class="text-coral">.</span></span>
+      </a>
+      <span
+        class="flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-[#6b8176]"><span
+          class="h-1.5 w-1.5 rounded-full bg-[#76b99a]"></span> Seu plano de corrida</span>
+    </header>
+
+    <main id="inicio">
+      <section class="relative overflow-hidden rounded-[26px] bg-ink px-6 pb-7 pt-7 text-white sm:px-10 sm:py-10">
+        <div class="hero-orbit"></div>
+        <div class="relative z-10">
+          <div
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.18em] text-[#c5ded1]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#a7ddbd]"></span> Um passo de cada vez</div>
+          <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <div>
+              <p class="mb-2 text-sm font-medium text-[#b3c9c4]">Seu próximo objetivo</p>
+              <h1 class="text-[42px] font-bold leading-[1.05] tracking-[-.055em] sm:text-[60px]">5 km <span
+                  class="text-[#f6a58b]">sub-34.</span></h1>
+              <p class="mt-3 max-w-md text-sm leading-6 text-[#c0d0cd]">Seis semanas para ganhar ritmo, confiança e
+                chegar mais longe.</p>
+            </div>
+            <div class="flex gap-7 border-t border-white/15 pt-5 sm:border-l sm:border-t-0 sm:py-1 sm:pl-8">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-[.15em] text-[#a2b9b3]">Hoje</p>
+                <p class="mt-1 text-xl font-bold">37:00</p>
+                <p class="text-xs text-[#a2b9b3]">7:24 /km</p>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-[.15em] text-[#a2b9b3]">Meta</p>
+                <p class="mt-1 text-xl font-bold text-[#f6a58b]">34:00</p>
+                <p class="text-xs text-[#a2b9b3]">6:48 /km</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="mt-7 flex gap-6 overflow-x-auto border-b border-line text-sm font-semibold"
+        aria-label="Navegação da página">
+        <a class="whitespace-nowrap border-b-2 border-ink pb-3 text-ink" href="#plano">Plano semanal</a>
+        <a class="whitespace-nowrap pb-3 text-muted hover:text-ink" href="#orientacoes">Orientações</a>
+        <a class="whitespace-nowrap pb-3 text-muted hover:text-ink" href="#prova">Dia da prova</a>
+      </nav>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+        <section id="plano" class="min-w-0 scroll-mt-5">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <p class="section-label">A jornada</p>
+              <h2 class="mt-1.5 text-2xl font-bold tracking-[-.04em]">Seu plano semanal</h2>
+            </div>
+            <span class="mb-1 whitespace-nowrap text-xs font-medium text-muted">6 semanas</span>
+          </div>
+          <div id="week-selector" class="week-scroll -mx-5 mt-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0"
+            aria-label="Selecionar semana"></div>
+          <div class="surface mt-4 overflow-hidden">
+            <div class="border-b border-line px-5 py-5 sm:px-7">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p id="week-eyebrow" class="section-label text-[#d0785f]"></p>
+                  <h3 id="week-title" class="mt-1.5 text-xl font-bold tracking-[-.035em]"></h3>
+                </div>
+                <span id="week-count"
+                  class="shrink-0 rounded-full bg-[#f2f6f2] px-3 py-1.5 text-xs font-bold text-[#74877d]"></span>
+              </div>
+              <div class="mt-5 flex items-center gap-3">
+                <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-[#edf1ed]">
+                  <div id="progress-bar" class="h-full rounded-full bg-[#82bba0] transition-all duration-300"></div>
+                </div>
+                <span id="progress-label" class="min-w-[34px] text-right text-xs font-bold text-[#819087]"></span>
+              </div>
+            </div>
+            <div id="workout-list" class="divide-y divide-line px-5 sm:px-7"></div>
+            <p class="bg-[#fafbf9] px-5 py-4 text-xs leading-5 text-muted sm:px-7">Toque no círculo para marcar um dia
+              como concluído. Seu progresso fica salvo neste dispositivo. As marcações do plano anterior não são aplicadas ao plano atualizado.</p>
+            <p id="storage-warning" class="hidden bg-[#fff4ec] px-5 py-3 text-xs leading-5 text-[#9b573d]" role="alert">
+              Não foi possível salvar o progresso neste navegador. Você ainda pode consultar o plano.</p>
+          </div>
+        </section>
+
+        <aside class="space-y-4">
+          <div class="rounded-[24px] bg-[#e5f1e9] p-6">
+            <div class="flex items-center justify-between"><span class="section-label text-[#6d8d79]">O
+                objetivo</span><span class="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-[#628d73]"
+                aria-hidden="true">↗</span></div>
+            <p class="mt-6 text-[32px] font-bold leading-none tracking-[-.05em]">6:48 <span
+                class="text-base font-medium text-[#789587]">/km</span></p>
+            <p class="mt-2 text-sm font-semibold">Ritmo médio de prova</p>
+            <p class="mt-3 text-xs leading-5 text-[#708b7b]">É o ritmo de referência para completar os 5 km em 34
+              minutos.</p>
+          </div>
+          <div class="surface p-6">
+            <p class="section-label">Lembrete gentil</p>
+            <p class="mt-3 text-base font-bold tracking-[-.02em]">Descansar também é treino.</p>
+            <p class="mt-2 text-sm leading-6 text-muted">Respeite os dias leves e celebre cada etapa do caminho.</p>
+          </div>
+        </aside>
+      </div>
+
+      <section id="orientacoes" class="scroll-mt-5 pt-14">
+        <p class="section-label">Para consultar quando precisar</p>
+        <h2 class="mt-1.5 text-2xl font-bold tracking-[-.04em]">Orientações de treino</h2>
+        <p class="mt-2 text-sm leading-6 text-muted">Conheça os ritmos e cuide da recuperação ao longo do ciclo.</p>
+        <div class="mt-5 grid gap-3 md:grid-cols-2">
+          <details class="guide-card group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Zonas de
+              intensidade <span class="details-plus text-2xl font-light text-coral transition-transform">+</span>
+            </summary>
+            <div class="mt-4 space-y-4 text-sm leading-6 text-muted">
+              <p><strong class="text-ink">Aquecimento e desaquecimento · 8:10–8:40/km</strong><br>Trote muito leve ou alternado com caminhada rápida, para preparar o corpo e reduzir os batimentos após o esforço.</p>
+              <p><strong class="text-ink">Regenerativo · 7:50–8:20/km</strong><br>Recuperação muscular e circulação sem
+                gerar fadiga. Ritmo confortável para conversar.</p>
+              <p><strong class="text-ink">Progressivo · de ~7:50 até 6:45/km</strong><br>Comece leve e acelere
+                gradualmente, treinando o controle do ritmo no final.</p>
+              <p><strong class="text-ink">Fartlek · 8:00/km leve; 6:20–6:40/km forte</strong><br>Alterne ritmos para
+                adaptar o sistema cardiovascular às mudanças de velocidade.</p>
+              <p><strong class="text-ink">Tiro · 6:00–6:25/km</strong><br>Esforço alto e respiração ofegante para
+                desenvolver VO₂ máximo e passada rápida.</p>
+              <p><strong class="text-ink">Longão · 7:40–8:10/km</strong><br>Ritmo leve para construir base aeróbica e
+                resistência mental.</p>
+              <p>Os ritmos específicos de cada sessão estão descritos no plano semanal.</p>
+            </div>
+          </details>
+          <details class="guide-card group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Estrutura da
+              semana <span class="details-plus text-2xl font-light text-coral transition-transform">+</span></summary>
+            <div class="mt-4 space-y-2 text-sm leading-6 text-muted">
+              <p><strong class="text-ink">Segunda:</strong> ritmo (progressivo ou regenerativo)</p>
+              <p><strong class="text-ink">Terça:</strong> fortalecimento muscular ou descanso</p>
+              <p><strong class="text-ink">Quarta:</strong> qualidade (tiros ou fartlek)</p>
+              <p><strong class="text-ink">Quinta:</strong> fortalecimento muscular ou mobilidade</p>
+              <p><strong class="text-ink">Sexta:</strong> longão</p>
+              <p><strong class="text-ink">Sábado:</strong> caminhada ativa leve ou descanso</p>
+              <p><strong class="text-ink">Domingo:</strong> descanso total</p>
+              <p>A semana da prova tem ajustes específicos; consulte o plano.</p>
+            </div>
+          </details>
+          <details class="guide-card group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Fortalecimento
+              <span class="details-plus text-2xl font-light text-coral transition-transform">+</span></summary>
+            <div class="mt-4 space-y-3 text-sm leading-6 text-muted">
+              <p>Priorize glúteos, posteriores de coxa, panturrilhas, quadríceps e core para desenvolver força e
+                estabilidade.</p>
+              <p><strong class="text-ink">Exercícios:</strong> agachamento, afundo, elevação pélvica, panturrilha em pé,
+                prancha isométrica e subida no caixote (step-up).</p>
+              <p><strong class="text-ink">Frequência:</strong> 2 vezes por semana, terça e quinta, por 30 a 40 minutos,
+                ou 1 vez na terça e mobilidade na quinta. Consulte os ajustes de cada semana no plano.</p>
+            </div>
+          </details>
+          <details class="guide-card group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">Nutrição e
+              sinais de alerta <span class="details-plus text-2xl font-light text-coral transition-transform">+</span>
+            </summary>
+            <div class="mt-4 space-y-3 text-sm leading-6 text-muted">
+              <p><strong class="text-ink">Antes de tiros e fartlek:</strong> consuma carboidrato de rápida absorção 30 a
+                45 minutos antes, como banana, pão com geleia ou tapioca pequena.</p>
+              <p><strong class="text-ink">Hidratação:</strong> mantenha-se bem hidratada no dia anterior e nas horas
+                antes do treino. A planilha original indica que não é necessário beber durante treinos de 5 km.</p>
+              <p><strong class="text-ink">Atenção à dor:</strong> tiros exigem mais das panturrilhas, do tendão de
+                Aquiles e dos posteriores. Se sentir dor aguda, interrompa a série imediatamente e passe para o trote
+                leve.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="prova" class="scroll-mt-5 pt-14">
+        <div class="rounded-[26px] bg-[#f8eae2] p-6 sm:p-9">
+          <p class="section-label text-[#bd806d]">Quando o grande dia chegar</p>
+          <h2 class="mt-2 text-2xl font-bold tracking-[-.04em]">Sua estratégia de prova</h2>
+          <p class="mt-2 text-sm leading-6 text-[#967d73]">Comece com controle. Termine com confiança.</p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <div class="rounded-2xl bg-white/70 p-4"><span class="text-xs font-bold text-[#cc8068]">ANTES</span>
+              <p class="mt-2 font-bold">Aqueça</p>
+              <p class="mt-1 text-xs leading-5 text-[#8d7e76]">10 a 15 min antes: 1 km de trote leve (pace 8:20–8:40/km) e 3 acelerações de 50 m.</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4"><span class="text-xs font-bold text-[#cc8068]">KM 01</span>
+              <p class="mt-2 font-bold">Controle</p>
+              <p class="mt-1 text-xs leading-5 text-[#8d7e76]">Segure a empolgação e mire entre 6:50 e 6:55/km.</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4"><span class="text-xs font-bold text-[#cc8068]">KM 02–03</span>
+              <p class="mt-2 font-bold">Cruzeiro</p>
+              <p class="mt-1 text-xs leading-5 text-[#8d7e76]">Encaixe 6:45 a 6:48/km. Foque na cadência e respiração.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4"><span class="text-xs font-bold text-[#cc8068]">KM 04</span>
+              <p class="mt-2 font-bold">Superação</p>
+              <p class="mt-1 text-xs leading-5 text-[#8d7e76]">Postura ereta, braços ativos e ritmo de 6:45/km.</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4"><span class="text-xs font-bold text-[#cc8068]">KM 05</span>
+              <p class="mt-2 font-bold">Entrega</p>
+              <p class="mt-1 text-xs leading-5 text-[#8d7e76]">Dê o que restou e tente 6:35–6:40/km nos últimos 800 m.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

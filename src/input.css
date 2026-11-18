@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #f27b59; outline-offset: 3px; }
+}
+
+@layer components {
+  .section-label { @apply text-[10px] font-extrabold uppercase tracking-[.2em] text-muted; }
+  .surface { @apply rounded-[24px] border border-line bg-white shadow-card; }
+  .guide-card { @apply rounded-[20px] border border-line bg-white p-5; }
+}
+
+.hero-orbit { position: absolute; width: 270px; height: 270px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; right: -80px; top: -90px; box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 68px rgba(255,255,255,.025); pointer-events: none; }
+.week-scroll { scrollbar-width: none; }
+.week-scroll::-webkit-scrollbar { display: none; }
+details summary::-webkit-details-marker { display: none; }
+details[open] .details-plus { transform: rotate(45deg); }
